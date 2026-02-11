@@ -81,6 +81,33 @@
             color: #FFD700;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         section {
             padding: 60px 0;
             border-bottom: 1px solid #eee;
@@ -262,6 +289,39 @@
             #hero h2 {
                 font-size: 2em;
             }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 100px;
+                left: 0;
+                right: 0;
+                background-color: #D63D1F;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                z-index: 98;
+            }
+
+            nav.active {
+                max-height: 500px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                justify-content: flex-start;
+                padding: 20px 0;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px 20px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
         }
     </style>
 </head>
@@ -279,13 +339,20 @@
     </header>
 
     <nav>
-        <ul>
-            <li><a href="#chi-siamo">Chi Siamo</a></li>
-            <li><a href="#servizi">Servizi</a></li>
-            <li><a href="#metodi">Metodi di Controllo</a></li>
-            <li><a href="#normative">Normative</a></li>
-            <li><a href="#contatti">Contatti</a></li>
-        </ul>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <ul>
+                <li><a href="#chi-siamo">Chi Siamo</a></li>
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#metodi">Metodi di Controllo</a></li>
+                <li><a href="#normative">Normative</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
 
     <section id="hero">
@@ -507,5 +574,25 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        // Menu hamburger
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Chiudi il menu quando clicchi su un link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
