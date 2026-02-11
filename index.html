@@ -595,6 +595,17 @@
                 nav.classList.remove('active');
             });
         });
+
+        // Scroll to top quando si clicca su header o logo
+        const header = document.querySelector('header');
+        const logo = document.querySelector('.logo');
+
+        header.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Anche il logo deve avere cursor pointer per indicare che è cliccabile
+        logo.style.cursor = 'pointer';
     </script>
 </body>
 </html>
