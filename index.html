@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldeng SRL - Verifica e Controllo Saldature</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF6B35 0%, #E55100 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #D63D1F;
+            padding: 15px 0;
+            position: sticky;
+            top: 100px;
+            z-index: 99;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FFD700;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #FF6B35;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            color: #E55100;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #FF6B35;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #FF6B35;
+            margin-top: 0;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF6B35;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        #hero {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        #hero h2 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+        }
+
+        #hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #FF6B35;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #E55100;
+        }
+
+        .method-card {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .method-card h4 {
+            color: #FF6B35;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #D63D1F;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .contact-info {
+            background: #f0f0f0;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .contact-info h3 {
+            color: #FF6B35;
+        }
+
+        .contact-item {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+
+        .contact-item strong {
+            color: #FF6B35;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            nav a {
+                display: block;
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            #hero h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <img src="logo.png" alt="Saldeng Logo" class="logo">
+                <div>
+                    <h1>SALDENG SRL</h1>
+                    <p>Eccellenza nella Verifica e Controllo Saldature</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#chi-siamo">Chi Siamo</a></li>
+            <li><a href="#servizi">Servizi</a></li>
+            <li><a href="#metodi">Metodi di Controllo</a></li>
+            <li><a href="#normative">Normative</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Garantiamo la Qualità delle Vostre Saldature</h2>
+            <p>Controlli non-distruttivi e analisi professionale per la massima affidabilità</p>
+            <a href="#contatti" class="cta-button">Richiedi una Consulenza</a>
+            <div style="margin-top: 40px;">
+                <img src="images/sald.tubo-acquedotto.jpg" alt="Saldatura tubo acquedotto" style="max-width: 100%; height: auto; border-radius: 8px; max-height: 300px;">
+            </div>
+        </div>
+    </section>
+
+    <section id="chi-siamo">
+        <div class="container">
+            <h2>Chi Siamo</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; margin-bottom: 20px;">
+                <strong>Saldeng SRL</strong> è un'azienda specializzata nella verifica e nel controllo della qualità 
+                delle saldature. Con competenze tecniche consolidate e strumenti all'avanguardia, 
+                garantiamo l'affidabilità e la conformità alle normative internazionali di tutti i lavori di saldatura.
+            </p>
+            <p style="font-size: 1.1em; line-height: 1.8;">
+                Il nostro team di esperti certificati utilizza metodologie all'avanguardia per assicurare che 
+                ogni saldatura sia realizzata secondo i più alti standard di qualità e sicurezza.
+            </p>
+        </div>
+    </section>
+
+    <section id="servizi">
+        <div class="container">
+            <h2>I Nostri Servizi</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/4-PND-VT.jpg" alt="Ispezione Visiva">
+                    <h3>Ispezione Visiva</h3>
+                    <p>Controllo accurato della geometria e dell'aspetto della saldatura per identificare eventuali difetti superficiali.</p>
+                    <ul class="features-list">
+                        <li>Verifica dimensionale</li>
+                        <li>Controllo estetico</li>
+                        <li>Rilevamento porosità superficiali</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/2.jpg" alt="Radiografia Industriale">
+                    <h3>Radiografia Industriale</h3>
+                    <p>Analisi con raggi X per rilevare difetti interni come cavità, inclusioni e mancanza di fusione.</p>
+                    <ul class="features-list">
+                        <li>Raggi X ad alta definizione</li>
+                        <li>Documentazione digitale</li>
+                        <li>Refertazione dettagliata</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/ut-clusaz.jpg" alt="Controllo Ultrasonico">
+                    <h3>Controllo Ultrasonico</h3>
+                    <p>Metodo non-distruttivo che utilizza onde sonore per identificare anomalie interne alla saldatura.</p>
+                    <ul class="features-list">
+                        <li>Tecnologia phased array</li>
+                        <li>Rilevamento alta precisione</li>
+                        <li>Mappatura 3D disponibile</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/5-PND-MT.jpg" alt="Analisi Magnetoscopica">
+                    <h3>Analisi Magnetoscopica</h3>
+                    <p>Test con particelle magnetiche per rilevare difetti superficiali e sub-superficiali in materiali ferrosi.</p>
+                    <ul class="features-list">
+                        <li>Sensibilità elevata</li>
+                        <li>Rapida esecuzione</li>
+                        <li>Economica e affidabile</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/7.jpg" alt="Test di Penetrante">
+                    <h3>Test di Penetrante Fluorescente</h3>
+                    <p>Metodo per rivelare difetti superficiali in materiali ferrosi e non ferrosi con altissima sensibilità.</p>
+                    <ul class="features-list">
+                        <li>Visibilità ottimale</li>
+                        <li>Applica a tutte le geometrie</li>
+                        <li>Elevata precisione</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <img src="images/diga-st.jpg" alt="Consulenza Tecnica">
+                    <h3>Consulenza Tecnica</h3>
+                    <p>Supporto professionale per la pianificazione e ottimizzazione dei processi di saldatura.</p>
+                    <ul class="features-list">
+                        <li>Audit qualità</li>
+                        <li>Validazione processi</li>
+                        <li>Formazione operatori</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metodi">
+        <div class="container">
+            <h2>Metodi di Controllo Non-Distruttivi</h2>
+            <p style="text-align: center; margin-bottom: 40px; font-size: 1.1em;">
+                Utilizziamo le più moderne tecnologie per garantire la massima affidabilità dei vostri processi di saldatura.
+            </p>
+
+            <div class="method-card">
+                <h4>📊 Radiografia Industriale (X-Ray)</h4>
+                <p>Consente di visualizzare l'interno della saldatura per identificare cavità, inclusioni di gas, 
+                mancanza di fusione e altre anomalie. Questo metodo è particolarmente utile per applicazioni critiche.</p>
+            </div>
+
+            <div class="method-card">
+                <h4>🔊 Analisi Ultrasonica</h4>
+                <p>Utilizza onde sonore ad alta frequenza per rilevare difetti interni. È veloce, non invasivo 
+                e permette una documentazione precisa della qualità della saldatura.</p>
+            </div>
+
+            <div class="method-card">
+                <h4>🧲 Test Magnetoscopico</h4>
+                <p>Ideale per materiali ferrosi, rivela difetti superficiali e sub-superficiali tramite particelle magnetiche. 
+                È economico e rapido.</p>
+            </div>
+
+            <div class="method-card">
+                <h4>💧 Analisi con Penetranti Fluorescenti</h4>
+                <p>Metodo altamente sensibile per rilevare difetti superficiali in qualsiasi materiale. 
+                Utilizza fluidi speciali che si infiltrano nelle microfessure rendendo i difetti visibili.</p>
+            </div>
+
+            <div class="method-card">
+                <h4>👁️ Ispezione Visiva Professionale</h4>
+                <p>Esame attento della geometria, dell'aspetto e della consistenza della saldatura. 
+                Primo step fondamentale in qualsiasi processo di controllo qualità.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="normative">
+        <div class="container">
+            <h2>Conformità Normative</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">
+                Tutti i nostri controlli rispettano i più severi standard internazionali di qualità.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; text-align: center;">
+                    <h4 style="color: #FF6B35;">ISO 3834</h4>
+                    <p>Requisiti di qualità per la fusione di saldature metalliche</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; text-align: center;">
+                    <h4 style="color: #FF6B35;">EN 1011</h4>
+                    <p>Linee guida per la saldatura di acciai e metalli ferrosi</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; text-align: center;">
+                    <h4 style="color: #FF6B35;">ASME BPVC</h4>
+                    <p>Codice ASME per recipienti in pressione</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; text-align: center;">
+                    <h4 style="color: #FF6B35;">EN 1595</h4>
+                    <p>Difetti di saldatura per radiografia</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; text-align: center;">
+                    <h4 style="color: #FF6B35;">ISO 11699</h4>
+                    <p>Metodi di controllo radiografico</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 20px; border-radius: 5px; text-align: center;">
+                    <h4 style="color: #FF6B35;">EN 12668</h4>
+                    <p>Metodi ultrasonici di controllo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contatti">
+        <div class="container">
+            <h2>Contattaci</h2>
+            
+            <div class="contact-info">
+                <h3>Saldeng SRL</h3>
+                
+                <div class="contact-item">
+                    <strong>Telefono:</strong> +39 (0) XX XXXXXXX
+                </div>
+                
+                <div class="contact-item">
+                    <strong>Email:</strong> info@saldeng.it
+                </div>
+                
+                <div class="contact-item">
+                    <strong>Indirizzo:</strong> [Inserire indirizzo aziendale]
+                </div>
+                
+                <div class="contact-item">
+                    <strong>Orari:</strong> Lunedì - Venerdì, 8:00 - 17:00
+                </div>
+
+                <p style="margin-top: 30px; font-style: italic; color: #666;">
+                    Siamo a vostra disposizione per analizzare le vostre esigenze specifiche 
+                    e fornire soluzioni personalizzate di controllo qualità.
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="mailto:info@saldeng.it" class="cta-button">Invia una Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Saldeng SRL - Tutti i diritti riservati</p>
+            <p>Verifica e Controllo Saldature | Eccellenza Tecnica e Affidabilità</p>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                P.IVA: [Da completare] | REA: [Da completare]
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
