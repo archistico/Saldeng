@@ -10,6 +10,54 @@ body {
     color: #333;
 }
 
+/* ==================== ANIMAZIONI ==================== */
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ==================== SEPARATORI ==================== */
+.section-divider {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
 header {
     background: linear-gradient(135deg, #FF6B35 0%, #E55100 100%);
     color: white;
@@ -115,6 +163,21 @@ h2 {
     margin-bottom: 30px;
     color: #FF6B35;
     text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FF6B35, transparent);
+    border-radius: 2px;
 }
 
 h3 {
@@ -139,6 +202,30 @@ h3 {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     overflow: hidden;
+    position: relative;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FF6B35 30%, #FF6B35 70%, transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .service-card img {
@@ -152,6 +239,10 @@ h3 {
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.service-card:hover::after {
+    opacity: 1;
 }
 
 .service-card h3 {
@@ -206,12 +297,31 @@ h3 {
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
     margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
 }
 
 .cta-button:hover {
     background-color: #E55100;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+    transform: scale(1.05);
+}
+
+.cta-button:hover::before {
+    left: 100%;
 }
 
 .method-card {
@@ -220,6 +330,31 @@ h3 {
     margin: 20px 0;
     border-radius: 8px;
     border: 1px solid #ddd;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.method-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #FF6B35 0%, #E55100 100%);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+
+.method-card:hover {
+    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.2);
+    transform: translateX(5px);
+}
+
+.method-card:hover::before {
+    transform: scaleY(1);
 }
 
 .method-card h4 {
@@ -233,6 +368,18 @@ footer {
     text-align: center;
     padding: 40px 0;
     margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FFD700 30%, #FFD700 70%, transparent);
 }
 
 footer p {
