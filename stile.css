@@ -49,6 +49,75 @@ body {
     }
 }
 
+/* ==================== ANIMAZIONI SALDATURA ==================== */
+@keyframes weldFlow {
+    0% {
+        d: path('M 0 30 Q 300 10 600 30 T 1200 30');
+        filter: drop-shadow(0 0 2px rgba(255, 107, 53, 0.3));
+    }
+    25% {
+        d: path('M 0 30 Q 300 15 600 28 T 1200 32');
+        filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.6));
+    }
+    50% {
+        d: path('M 0 30 Q 300 22 600 30 T 1200 28');
+        filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.8));
+    }
+    75% {
+        d: path('M 0 30 Q 300 12 600 32 T 1200 26');
+        filter: drop-shadow(0 0 8px rgba(255, 107, 53, 0.6));
+    }
+    100% {
+        d: path('M 0 30 Q 300 10 600 30 T 1200 30');
+        filter: drop-shadow(0 0 2px rgba(255, 107, 53, 0.3));
+    }
+}
+
+@keyframes sparkleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) translateX(0) scale(0);
+        filter: blur(0);
+    }
+    10% {
+        opacity: 1;
+        scale: 1;
+    }
+    50% {
+        opacity: 1;
+        filter: blur(1px);
+    }
+    85% {
+        opacity: 0.8;
+        transform: translateY(-30px) translateX(5px) scale(0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) translateX(10px) scale(0);
+        filter: blur(2px);
+    }
+}
+
+@keyframes sparklePulse {
+    0%, 100% {
+        r: 1.5;
+        filter: drop-shadow(0 0 1px #FFD700);
+    }
+    50% {
+        r: 2.5;
+        filter: drop-shadow(0 0 4px #FFD700);
+    }
+}
+
+@keyframes weldGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 3px rgba(255, 107, 53, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.7)) drop-shadow(0 0 20px rgba(255, 173, 73, 0.3));
+    }
+}
+
 /* ==================== SEPARATORI ==================== */
 .section-divider {
     width: 100%;
@@ -56,6 +125,38 @@ body {
     margin: 0;
     padding: 0;
     display: block;
+}
+
+/* Animazione delle linee di saldatura */
+.section-divider path {
+    animation: weldFlow 4s ease-in-out infinite;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Animazione delle scintille */
+.section-divider circle {
+    animation: sparkleFloat 1.5s ease-out forwards;
+    filter: drop-shadow(0 0 2px #FFD700);
+}
+
+/* Scintille con delay diverso */
+.section-divider circle:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.section-divider circle:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.section-divider circle:nth-child(3) {
+    animation-delay: 1s;
+    animation-duration: 1.8s;
+}
+
+.section-divider circle:nth-child(4) {
+    animation-delay: 1.5s;
+    animation-duration: 2s;
 }
 
 header {
